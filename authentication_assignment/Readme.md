@@ -1,4 +1,4 @@
-# Product Review Backend
+# User Management System
 
 ## 1. Basic Information
 
@@ -15,7 +15,7 @@ To clone this repository to your local machine, use the following command:
 ## 3. How to Start the App
 
 ### 1. Navigate to the project directory:
-    cd product-review-backend
+    cd authentication_assignment
 ### 2. Install dependencies:
     npm install
 ### 3. Start the application:
@@ -23,57 +23,47 @@ To clone this repository to your local machine, use the following command:
 The app will run on http://localhost:3000 by default.
 
 ## 4. API Endpoints:
-### Products:
-- Add a Product:
+### User:
+- User Registration:
 
-    - Endpoint: POST /api/products
+    - Endpoint: POST /api/users/login
     - Request Body:
     ```bash
         {
-        "name": "Sample Product",
-        "price": 49.99
+            "first_name": "Dinesh",
+            "last_name": "Kartik",
+            "email": "dinesh@example.com",
+            "password": "YourPassword@543"
+            "mobile": "1234567899",
+            "role": "member",
+            "status": "active"
         }
     ```
-- Read All Products:
 
-    - Endpoint: GET /api/products
-- Read Product by ID:
+- User Login:
 
-    - Endpoint: GET /api/products/:id
-- Update a Product:
-
-    - Endpoint: PUT /api/products/:id
-    Request Body:
+    - Endpoint: POST /api/users/login
+    - Request Body:
     ```bash
         {
-        "name": "Updated Product",
-        "price": 59.99
+            "email": "dinesh@example.com",
+            "password": "YourPassword@543",
+            "role": "member"
         }
     ```
-- Delete a Product:
 
-    - Endpoint: DELETE /api/products/:id
-### Reviews:
-- Create a Review for a Product:
-
-    - Endpoint: POST /api/products/:productId/reviews
-    - Request Body:
-        ```bash
-            {
-            "userId": "user123",
-            "description": "This product is amazing!"
-            }
-        ```
-- Delete a Review:
-
-    - Endpoint: DELETE /api/products/:productId/reviews/:reviewId
-- Virtual Population of Reviews for a Product:
-
-    - Endpoint: GET /api/products/:productId/reviews
+- JWT Token Validity:
+    - Endpoint: GET /api/users/details
+    - Request Header:
+    ```bash
+    {
+    "Authorization": "<JWT_token>"
+    }
+    ```
 
 ### Information
 - Error Handling:
-    - The application implements proper error handling for various scenarios, such as failed CRUD operations or data retrieval issues.
+    - The application implements proper error handling for various scenarios, such as failed registration and  login operations or data retrieval issues.
 - Testing:
     - Unit tests are implemented to validate the functionality of key components, including product and review management.
 - Documentation:
